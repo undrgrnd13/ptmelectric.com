@@ -2,18 +2,19 @@
 
 Static site for [PTM Electric, Inc.](https://www.ptmelectric.com) — licensed electrical contractor (**FL EC13004084 · NC U.38360 · SC SC-CLM.119110**) serving residential, commercial, and light-industrial clients in South Florida.
 
-DBA: [Stormpower Generators](https://www.stormpowergenerators.com) (separate brand site for standby generators — featured as its own home services card).
+DBA: [Stormpower Generators](https://www.stormpowergenerators.com) — overview on-site at [`generators.html`](generators.html); plans/details on the Stormpower brand site.
 
 ## Pages
 
 | File | Purpose |
 |------|---------|
-| `index.html` | Home + company/about + featured projects + 3-card services (Residential · Commercial · Generators/Stormpower) |
+| `index.html` | Home + company/about + featured projects + 3-card services (Residential · Commercial · Generators) |
 | `residential.html` | Residential services |
 | `commercial.html` | Commercial / light industrial + track record |
+| `generators.html` | Stormpower Generators division overview + CTA to stormpowergenerators.com |
 | `contact.html` | Contact + Bid Request (mailto `bids@ptmelectric.com`) |
 | `sitemap.xml` / `robots.txt` | SEO crawl files |
-| `images/` | Logos, project photos, heroes |
+| `images/` | Logos (rasters via PAT push; CDN for project photos in HTML) |
 
 ## Contact
 
@@ -24,8 +25,6 @@ DBA: [Stormpower Generators](https://www.stormpowergenerators.com) (separate bra
 
 ## Redirects (configure on Porkbun / host)
 
-Document these when cutting over from Squarespace:
-
 | Old path | New target |
 |----------|------------|
 | `/home` | `/` |
@@ -33,24 +32,20 @@ Document these when cutting over from Squarespace:
 | `/commerciallightindustrial` | `/commercial.html` |
 | `/RESIDENTIAL` | `/residential.html` |
 
-Optional: `/about` -> `/` (about content is folded into the home page), `/contact` -> `/contact.html`, `/residential` -> `/residential.html`.
+Optional: `/about` -> `/`, `/contact` -> `/contact.html`, `/residential` -> `/residential.html`, `/generators` -> `/generators.html`.
 
 ## Deploy
 
-Public GitHub repo for Porkbun Static Hosting + GitHub Connect (same playbook as `stormpowergenerators.com`). Prefer PRs for content changes. **Do not merge** until Paul reviews.
+Public GitHub repo for Porkbun Static Hosting + GitHub Connect. Prefer PRs for content changes. **Do not merge** until Paul reviews.
 
-## Phase 1 / Option A notes
+## Phase 1 notes (direction change)
 
-- Licenses everywhere: `FL EC13004084 · NC U.38360 · SC SC-CLM.119110` (no “SC soon”)
-- Home services: three equal cards — Residential · Commercial / Light Industrial · Generators (Stormpower) with amber accent + CTA to stormpowergenerators.com
-- Bid wording: `Bid requests: bids@ptmelectric.com`
-- Heroes/featured: real job photos (Shoppes Westlake, Pure Life Renal, salon, laundry, suite, Bath & Body Works) — Pexels/stock lightbulb fillers removed
-- Bid Request form uses mailto; HTML comment documents Formspree for later
+- **Generators page** on ptmelectric.com (not external-only bounce from home card)
+- Nav (header + mobile + footer) includes Generators on all pages; sitemap updated
+- Home services card → `generators.html`; Stormpower external CTA on that page
+- Project captions/alt text audited to match photos (Shoppes Westlake, Pure Life Renal, Phenix Salon Suites, H&R Block, Neptune City Laundromat, Sudsville); Bath & Body Works kept as client logo only
+- Home hero (Pure Life) diversifies from commercial hero (Shoppes)
 
 ## Image assets note
 
-Optimized rasters from the Squarespace crawl live locally under `images/` on the build machine. GitHub MCP `push_files` UTF-8-encodes content and corrupts binary blobs, so this PR:
-
-- Ships `images/logo.svg` (text logo) for chrome
-- Uses Squarespace CDN URLs for **real project photos** (not stock) so Paul can preview immediately
-- Follow-up: `git push` with a PAT should add local `images/*.{png,jpg,webp}` and switch `src` to relative paths before Squarespace cancel
+GitHub MCP `push_files` corrupts binary blobs. HTML uses Squarespace CDN URLs for real project photos so preview works. Follow-up: PAT `git push` of local `images/*.{jpg,png,webp}` then switch `src` to relative paths before Squarespace cancel.
