@@ -12,54 +12,46 @@
       theme: {
         extend: {
           colors: {
-            brand: {
-              500: '#2563eb',
-              600: '#1d4ed8',
-            }
+            brand: { 500: '#2563eb', 600: '#1d4ed8' },
+            storm: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' }
           }
         }
       }
     }
   </script>
   <style>html { scroll-behavior: smooth; }</style>
-
 </head>
 <body class="bg-slate-950 text-slate-100 antialiased">
-
   <div class="fixed bottom-0 inset-x-0 z-50 bg-slate-900/95 backdrop-blur border-t border-slate-700 p-3 flex gap-3 md:hidden">
     <a href="tel:5613296974" class="flex-1 bg-brand-500 hover:bg-brand-600 text-white font-semibold py-3 rounded-xl text-center text-sm">Call 561-329-6974</a>
     <a href="contact.html#bid-request" class="flex-1 border border-slate-500 hover:border-brand-500 text-white font-semibold py-3 rounded-xl text-center text-sm">Bid Request</a>
   </div>
-
   <header class="bg-slate-950/90 backdrop-blur border-b border-slate-800 sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3">
-        <img src="images/logo.svg" alt="PTM Electric, Inc." class="h-12 md:h-14 w-auto">
-      </a>
+      <a href="index.html"><img src="images/logo.svg" alt="PTM Electric, Inc." class="h-12 md:h-14 w-auto"></a>
       <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
         <a href="index.html" class="hover:text-brand-500 transition">Home</a>
         <a href="commercial.html" class="hover:text-brand-500 transition">Commercial</a>
         <a href="residential.html" class="hover:text-brand-500 transition">Residential</a>
+        <a href="generators.html" class="hover:text-brand-500 transition">Generators</a>
         <a href="contact.html" class="text-brand-500">Contact</a>
       </nav>
       <div class="hidden md:flex items-center gap-3">
         <a href="tel:5613296974" class="text-sm font-semibold hover:text-brand-500 transition">561-329-6974</a>
         <a href="contact.html#bid-request" class="bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition">Bid Request</a>
       </div>
-      <button id="menuBtn" class="md:hidden text-slate-300 hover:text-white" aria-label="Open menu">
-        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
+      <button id="menuBtn" class="md:hidden text-slate-300" aria-label="Open menu"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
     </div>
     <div id="mobileNav" class="hidden md:hidden border-t border-slate-800 bg-slate-950">
       <div class="px-5 py-4 flex flex-col gap-4 text-sm font-medium">
-        <a href="index.html" class="">Home</a>
-        <a href="commercial.html" class="">Commercial</a>
-        <a href="residential.html" class="">Residential</a>
+        <a href="index.html" class="hover:text-brand-500 transition">Home</a>
+        <a href="commercial.html" class="hover:text-brand-500 transition">Commercial</a>
+        <a href="residential.html" class="hover:text-brand-500 transition">Residential</a>
+        <a href="generators.html" class="hover:text-brand-500 transition">Generators</a>
         <a href="contact.html" class="text-brand-500">Contact</a>
       </div>
     </div>
   </header>
-
   <div class="bg-slate-900 border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-5 py-2 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-xs text-slate-400">
       <span class="font-medium text-slate-300">FL EC13004084 &#183; NC U.38360 &#183; SC SC-CLM.119110</span>
@@ -69,7 +61,6 @@
       <span>Call 561-329-6974</span>
     </div>
   </div>
-
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900"></div>
     <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 50% 30%, #2563eb 0%, transparent 50%);"></div>
@@ -88,7 +79,7 @@
       </div>
       <p class="text-center text-sm text-slate-400 mt-6">16971 W. Hialeah Drive, Loxahatchee, FL 33470</p>
       <p class="text-center text-sm text-slate-400 mt-1">FL EC13004084 &#183; NC U.38360 &#183; SC SC-CLM.119110</p>
-      <p class="text-center text-sm text-slate-500 mt-3">Bid requests: <a href="mailto:bids@ptmelectric.com" class="text-brand-500 hover:underline">bids@ptmelectric.com</a></p>
+      <p class="text-center text-sm text-slate-500 mt-3">Bid requests: <a href="mailto:bids@ptmelectric.com" class="text-brand-500 hover:underline">bids@ptmelectric.com</a> · Generators: <a href="generators.html" class="text-storm-400 hover:underline">Stormpower overview</a></p>
     </div>
   </section>
 
@@ -117,6 +108,7 @@
                 <option>Residential</option>
                 <option>Commercial</option>
                 <option>Light Industrial</option>
+                <option>Generators (Stormpower)</option>
                 <option>Other</option>
               </select>
             </div>
@@ -156,7 +148,6 @@
       return false;
     }
   </script>
-
   <footer class="border-t border-slate-800 py-10 pb-24 md:pb-10">
     <div class="max-w-7xl mx-auto px-5">
       <div class="grid md:grid-cols-3 gap-8 text-sm text-slate-500 mb-8">
@@ -174,8 +165,9 @@
             <a href="index.html" class="hover:text-brand-500 transition">Home</a>
             <a href="commercial.html" class="hover:text-brand-500 transition">Commercial / Light Industrial</a>
             <a href="residential.html" class="hover:text-brand-500 transition">Residential</a>
+            <a href="generators.html" class="hover:text-brand-500 transition">Generators</a>
             <a href="contact.html" class="hover:text-brand-500 transition">Contact</a>
-            <a href="https://www.stormpowergenerators.com" class="hover:text-brand-500 transition" target="_blank" rel="noopener">Stormpower Generators</a>
+            <a href="https://www.stormpowergenerators.com" class="hover:text-storm-400 transition" target="_blank" rel="noopener">Stormpower Generators</a>
           </div>
         </div>
         <div>
@@ -183,19 +175,17 @@
           <div>FL EC13004084</div>
           <div>NC U.38360</div>
           <div>SC SC-CLM.119110</div>
-          <div class="mt-3">DBA: <a href="https://www.stormpowergenerators.com" class="text-brand-500 hover:underline" target="_blank" rel="noopener">Stormpower Generators</a></div>
+          <div class="mt-3">DBA: <a href="generators.html" class="text-brand-500 hover:underline">Stormpower Generators</a></div>
           <div class="mt-1 text-xs"><a href="https://www.myfloridalicense.com/LicenseDetail.asp?SID=&id=FB0F0DAA7CD6AF671BA4BA34830B08B7" class="hover:text-brand-500 transition" target="_blank" rel="noopener">Verify FL license</a></div>
         </div>
       </div>
       <div class="text-xs text-slate-600 border-t border-slate-800 pt-6">&copy; PTM Electric, Inc. All rights reserved. Small Business Enterprise. FL EC13004084 &#183; NC U.38360 &#183; SC SC-CLM.119110</div>
     </div>
   </footer>
-
   <script>
     const btn = document.getElementById('menuBtn');
     const nav = document.getElementById('mobileNav');
     if (btn && nav) btn.addEventListener('click', () => { nav.classList.toggle('hidden'); });
   </script>
-
 </body>
 </html>
