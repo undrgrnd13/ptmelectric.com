@@ -1,6 +1,6 @@
 # ptmelectric.com
 
-Static site for [PTM Electric, Inc.](https://www.ptmelectric.com) — licensed electrical contractor (FL **EC13004084**, NC **U.38360**) serving residential, commercial, and light-industrial clients in South Florida.
+Static site for [PTM Electric, Inc.](https://www.ptmelectric.com) - licensed electrical contractor (FL **EC13004084**, NC **U.38360**) serving residential, commercial, and light-industrial clients in South Florida.
 
 DBA: [Stormpower Generators](https://www.stormpowergenerators.com) (separate brand site).
 
@@ -33,7 +33,7 @@ Document these when cutting over from Squarespace:
 | `/commerciallightindustrial` | `/commercial.html` |
 | `/RESIDENTIAL` | `/residential.html` |
 
-Optional: `/about` → `/` (about content is folded into the home page), `/contact` → `/contact.html`, `/residential` → `/residential.html`.
+Optional: `/about` -> `/` (about content is folded into the home page), `/contact` -> `/contact.html`, `/residential` -> `/residential.html`.
 
 ## Deploy
 
@@ -46,3 +46,11 @@ Public GitHub repo for Porkbun Static Hosting + GitHub Connect (same playbook as
 - No ZipRecruiter widget
 - Real meta descriptions on all pages
 - Bid Request form uses mailto; HTML comment documents Formspree for later
+
+## Image assets note
+
+Optimized rasters from the Squarespace crawl live locally under `images/` on the build machine. GitHub MCP `push_files` UTF-8-encodes content and corrupts binary blobs, so this PR:
+
+- Ships `images/logo.svg` (text logo) for chrome
+- Uses Squarespace CDN URLs for project/hero/logo strip photos so Paul can preview immediately
+- Follow-up: `git push` with a PAT should add local `images/*.{png,jpg,webp}` and switch `src` back to relative paths before Squarespace cancel
