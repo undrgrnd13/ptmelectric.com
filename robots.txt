@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.ptmelectric.com/sitemap.xml
+Sitemap: https://ptmelectric.com/sitemap.xml
