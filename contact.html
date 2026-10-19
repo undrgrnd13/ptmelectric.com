@@ -75,37 +75,20 @@
     <div class="max-w-xl mx-auto px-5">
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8">
         <h2 class="text-xl font-bold mb-1 text-center">Bid Request</h2>
-        <p class="text-sm text-slate-400 text-center mb-6">Fill this out and it comes straight to our bids inbox. Prefer to call? <a href="tel:5613296974" class="text-brand-500 hover:underline">561-329-6974</a>. You can also email <a href="mailto:bids@ptmelectric.com" class="text-brand-500 hover:underline">bids@ptmelectric.com</a>.</p>
-        <form id="bidForm" class="space-y-5" action="https://formsubmit.co/bids@ptmelectric.com" method="POST" enctype="multipart/form-data">
-          <input type="hidden" name="_subject" value="New bid request from ptmelectric.com">
-          <input type="hidden" name="_next" value="https://ptmelectric.com/thanks.html">
-          <input type="hidden" name="_template" value="table">
-          <div style="position:absolute;left:-9999px" aria-hidden="true"><label for="_honey">Leave this empty</label><input id="_honey" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
+        <p class="text-sm text-slate-400 text-center mb-6">Bid requests: <strong class="text-slate-300">bids@ptmelectric.com</strong> — this form opens your email client with a prefilled message. For general questions, email <a href="mailto:paul@ptmelectric.com" class="text-brand-500 hover:underline">paul@ptmelectric.com</a>.</p>
+        <!-- Formspree: replace mailto handler with Formspree endpoint when ready, e.g. action="https://formspree.io/f/xxxxxxx" method="POST" -->
+        <form id="bidForm" class="space-y-5" onsubmit="return sendBid(event)">
           <div class="grid sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-sm font-medium mb-1.5 text-slate-300" for="name">Name *</label>
-              <input id="name" name="name" type="text" required autocomplete="name" class="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl focus:outline-none focus:border-brand-500 text-white">
+              <input id="name" name="name" type="text" required class="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl focus:outline-none focus:border-brand-500 text-white">
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1.5 text-slate-300" for="company">Company (optional)</label>
-              <input id="company" name="company" type="text" autocomplete="organization" class="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl focus:outline-none focus:border-brand-500 text-white">
+              <label class="block text-sm font-medium mb-1.5 text-slate-300" for="company">Company</label>
+              <input id="company" name="company" type="text" class="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl focus:outline-none focus:border-brand-500 text-white">
             </div>
           </div>
           <div class="grid sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-sm font-medium mb-1.5 text-slate-300" for="phone">Phone *</label>
-              <input id="phone" name="phone" type="tel" required autocomplete="tel" class="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl focus:outline-none focus:border-brand-500 text-white">
-            </div>
-            <div>
-              <label class="block text-sm font-medium mb-1.5 text-slate-300" for="email">Email *</label>
-              <input id="email" name="email" type="email" required autocomplete="email" class="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl focus:outline-none focus:border-brand-500 text-white">
-            </div>
-          </div>
-          <div class="grid sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-sm font-medium mb-1.5 text-slate-300" for="project_location">Project city or address *</label>
-              <input id="project_location" name="project_location" type="text" required class="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl focus:outline-none focus:border-brand-500 text-white">
-            </div>
             <div>
               <label class="block text-sm font-medium mb-1.5 text-slate-300" for="project_type">Project Type *</label>
               <select id="project_type" name="project_type" required class="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl focus:outline-none focus:border-brand-500 text-white">
@@ -117,22 +100,42 @@
                 <option>Other</option>
               </select>
             </div>
+            <div>
+              <label class="block text-sm font-medium mb-1.5 text-slate-300" for="phone">Phone *</label>
+              <input id="phone" name="phone" type="tel" required class="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl focus:outline-none focus:border-brand-500 text-white">
+            </div>
           </div>
           <div>
-            <label class="block text-sm font-medium mb-1.5 text-slate-300" for="details">Project details *</label>
-            <textarea id="details" name="details" rows="4" required class="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl focus:outline-none focus:border-brand-500 text-white" placeholder="Scope of work, timeline, general contractor, anything else we should know..."></textarea>
-          </div>
-          <div>
-            <label class="block text-sm font-medium mb-1.5 text-slate-300" for="attachment">Plans or photos (optional)</label>
-            <input id="attachment" name="attachment" type="file" accept=".pdf,.jpg,.jpeg,.png" class="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl focus:outline-none focus:border-brand-500 text-white">
+            <label class="block text-sm font-medium mb-1.5 text-slate-300" for="notes">Notes</label>
+            <textarea id="notes" name="notes" rows="4" class="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl focus:outline-none focus:border-brand-500 text-white" placeholder="Project address, timeline, scope..."></textarea>
           </div>
           <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-semibold py-3.5 rounded-xl transition">Send Bid Request</button>
-          <p class="text-xs text-slate-500 text-center">You may be asked to tick a quick &quot;I&apos;m not a robot&quot; box. Trouble sending? Call <a href="tel:5613296974" class="text-brand-500 hover:underline">561-329-6974</a> or email <a href="mailto:bids@ptmelectric.com" class="text-brand-500 hover:underline">bids@ptmelectric.com</a>.</p>
         </form>
       </div>
       <p class="text-center text-sm text-slate-500 mt-8">We appreciate your business. If there&apos;s anything we can do to improve your experience, please let us know.</p>
     </div>
   </section>
+
+  <script>
+    function sendBid(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const company = document.getElementById('company').value.trim();
+      const project = document.getElementById('project_type').value;
+      const phone = document.getElementById('phone').value.trim();
+      const notes = document.getElementById('notes').value.trim();
+      const subject = encodeURIComponent('Bid Request - ' + project + (company ? ' - ' + company : ''));
+      const body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Company: ' + (company || '(none)') + '\n' +
+        'Project type: ' + project + '\n' +
+        'Phone: ' + phone + '\n\n' +
+        'Notes:\n' + (notes || '(none)')
+      );
+      window.location.href = 'mailto:bids@ptmelectric.com?subject=' + subject + '&body=' + body;
+      return false;
+    }
+  </script>
   <footer class="border-t border-slate-800 py-10 pb-24 md:pb-10">
     <div class="max-w-7xl mx-auto px-5">
       <div class="grid md:grid-cols-3 gap-8 text-sm text-slate-500 mb-8">
