@@ -23,6 +23,7 @@
 - Barns and stables
 - Troubleshooting and repair
 - Rewiring
+- Generators (standby generator installation, maintenance and repair through Stormpower Generators)
 - Panel and service upgrades
 - FPL overhead to underground conversions (coordinated with FPL)
 - EV chargers
